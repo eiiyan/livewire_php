@@ -3,6 +3,7 @@
 namespace App\Livewire\Tarefa;
 
 use App\Models\Tarefa;
+use Illuminate\Console\View\Components\Component as ComponentsComponent;
 use Livewire\Component;
 
 class Create extends Component

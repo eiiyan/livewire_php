@@ -3,6 +3,7 @@
 namespace App\Livewire\Tarefa;
 
 use App\Models\Tarefa;
+use Illuminate\Console\View\Components\Component as ComponentsComponent;
 use Livewire\Component;
 
 class Index extends Component
@@ -11,6 +12,11 @@ class Index extends Component
     public $nome;
     public $data_hora;
     public $descricao;
+
+    protected $listeners = [
+        'abrirModalEdicao',
+        'tarefaAtualizada'=> 'render',
+    ];
 
     public function render()
 
@@ -35,6 +41,10 @@ class Index extends Component
 
     public function abrirModalExclusao($tarefaId){
         $this->tarefaId = $tarefaId;
+    }
+
+    public function abrirModalEdicao($tarefaId){
+        $this->dispatch('editarTarefa' , tarefaId: $tarefaId);
     }
 
     public function excluir(){
